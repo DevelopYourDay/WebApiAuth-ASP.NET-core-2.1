@@ -1,0 +1,14 @@
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\bin\Debug\netcoreapp2.1\WebApiAuth.deps.json
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\bin\Debug\netcoreapp2.1\WebApiAuth.runtimeconfig.json
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\bin\Debug\netcoreapp2.1\WebApiAuth.runtimeconfig.dev.json
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\bin\Debug\netcoreapp2.1\WebApiAuth.dll
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\bin\Debug\netcoreapp2.1\WebApiAuth.pdb
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.csprojAssemblyReference.cache
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.RazorAssemblyInfo.cache
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.RazorAssemblyInfo.cs
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.AssemblyInfoInputs.cache
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.AssemblyInfo.cs
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.RazorTargetAssemblyInfo.cache
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.dll
+C:\Users\Ricardo\source\repos\WebApiAuth\WebApiAuth\obj\Debug\netcoreapp2.1\WebApiAuth.pdb
