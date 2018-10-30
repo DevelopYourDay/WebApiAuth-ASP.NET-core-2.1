@@ -1,4 +1,4 @@
-#  Welcome to the WebApiAuth-ASP.NET-core-2.1 wiki!
+#  Welcome to the WebApiAuth-ASP.NET-core-2.1
 
 ### ASP.NET Core 2.1 API that supports user registration, login with JWT authentication and user management.
 
