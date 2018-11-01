@@ -2,7 +2,7 @@
 
 ### ASP.NET Core 2.1 API that supports user registration, login with JWT authentication and user management.
 
-### The application is configured to use the Entity Framework Core InMemory provider which allows EF Core to create and connect to an in-memory database rather than you having to install a real database server.
+### The application is configured to use the Entity Framework Core InMemory provider which allows EF Core to create and connect to local database rather than you having to install a real database server.
 
 **Controllers** - define the end points / routes for the web api, controllers are the entry point into the web api from client applications via http requests.
 
