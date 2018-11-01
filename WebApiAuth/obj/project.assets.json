@@ -12314,11 +12314,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricardo\\source\\repos\\WebApiAuth\\WebApiAuth\\WebApiAuth.csproj",
+      "projectUniqueName": "C:\\Users\\Ricardo\\Documents\\Github\\WebApiAuth-ASP.NET-core-2.1\\WebApiAuth\\WebApiAuth.csproj",
       "projectName": "WebApiAuth",
-      "projectPath": "C:\\Users\\Ricardo\\source\\repos\\WebApiAuth\\WebApiAuth\\WebApiAuth.csproj",
+      "projectPath": "C:\\Users\\Ricardo\\Documents\\Github\\WebApiAuth-ASP.NET-core-2.1\\WebApiAuth\\WebApiAuth.csproj",
       "packagesPath": "C:\\Users\\Ricardo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricardo\\source\\repos\\WebApiAuth\\WebApiAuth\\obj\\",
+      "outputPath": "C:\\Users\\Ricardo\\Documents\\Github\\WebApiAuth-ASP.NET-core-2.1\\WebApiAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

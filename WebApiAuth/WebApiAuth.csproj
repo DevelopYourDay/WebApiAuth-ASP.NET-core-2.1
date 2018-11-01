@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dtos\NewFolder\**" />
+    <Content Remove="Dtos\NewFolder\**" />
+    <EmbeddedResource Remove="Dtos\NewFolder\**" />
+    <None Remove="Dtos\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

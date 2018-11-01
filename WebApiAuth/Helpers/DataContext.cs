@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WebApiAuth.Entity;
+using WebApiAuth.Models;
 
 namespace WebApiAuth.Helpers
 {
@@ -12,5 +12,7 @@ namespace WebApiAuth.Helpers
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<TokenBlackList> tokens { get; set; }
     }
 }

@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebApiAuth.Entity;
+using WebApiAuth.Models;
 using WebApiAuth.Helpers;
+using System.Threading.Tasks;
 
 namespace WebApiAuth.Services
 {
-    public interface IUserService
-    {
-        User Authenticate(string username, string password);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        User Create(User user, string password);
-        void Update(User user, string password = null);
-        void Delete(int id);
-    }
 
-    public class UserService : IUserService
+    public class UserService 
     {
         private DataContext _context;
 
@@ -25,14 +17,14 @@ namespace WebApiAuth.Services
             _context = context;
         }
 
-        public User Authenticate(string username, string password)
+        public User Authenticate(string email, string password)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                return null;
+            //if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            //    return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Username == username);
+            var user = _context.Users.SingleOrDefault(x => x.Email.ToLower() == email.ToLower());
 
-            // check if username exists
+            // check if user exists
             if (user == null)
                 return null;
 
@@ -57,11 +49,8 @@ namespace WebApiAuth.Services
         public User Create(User user, string password)
         {
             // validation
-            if (string.IsNullOrWhiteSpace(password))
-                throw new AppException("Password is required");
-
-            if (_context.Users.Any(x => x.Username == user.Username))
-                throw new AppException("Username \"" + user.Username + "\" is already taken");
+            if (_context.Users.Any(x => x.Email == user.Email))
+                throw new AppException("Email \"" + user.Email + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -75,12 +64,19 @@ namespace WebApiAuth.Services
             return user;
         }
 
-        public void Update(User userParam, string password = null)
+        public void Update(User userParam)
         {
             var user = _context.Users.Find(userParam.Id);
 
             if (user == null)
                 throw new AppException("User not found");
+
+            if (userParam.Email != user.Email)
+            {
+                // username has changed so check if the new username is already taken
+                if (_context.Users.Any(x => x.Email == userParam.Email))
+                    throw new AppException("Email " + userParam.Email + " is already taken");
+            }
 
             if (userParam.Username != user.Username)
             {
@@ -93,12 +89,25 @@ namespace WebApiAuth.Services
             user.FirstName = userParam.FirstName;
             user.LastName = userParam.LastName;
             user.Username = userParam.Username;
+            user.Email = userParam.Email;
+
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
+
+        public void UpdatePassword(User userParam, string NewPassword = null)
+        {
+            var user = _context.Users.Find(userParam.Id);
+
+            if (user == null)
+                throw new AppException("User not found");
 
             // update password if it was entered
-            if (!string.IsNullOrWhiteSpace(password))
+            if (!string.IsNullOrWhiteSpace(NewPassword))
             {
                 byte[] passwordHash, passwordSalt;
-                CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                CreatePasswordHash(NewPassword, out passwordHash, out passwordSalt);
 
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
@@ -117,6 +126,27 @@ namespace WebApiAuth.Services
                 _context.SaveChanges();
             }
         }
+
+  
+        public TokenBlackList Logout(string Blocktoken)
+        {
+            // validation
+            if (_context.tokens.Any(x => x.token == Blocktoken))
+                throw new AppException("Token ja se encontra bloqueado");
+            TokenBlackList token = new TokenBlackList();
+            token.token = Blocktoken;
+            _context.tokens.Add(token);
+            _context.SaveChanges();
+
+            return token;
+        }
+
+        public bool GettokenByToken (string acessToken)
+        {
+                return _context.tokens.Any(x => x.token == acessToken);
+        }
+
+
 
         // private helper methods
 
@@ -150,6 +180,7 @@ namespace WebApiAuth.Services
 
             return true;
         }
+
     }
 }
 

@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "75771d4b-36f0-4d6a-aeef-97fcf4d169bb",
+		"name": "User CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{URL}}users/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6e286f2-ee7a-4e0c-9da2-94c428735562",
+						"exec": [
+							"var JsonData = pm.response.json();",
+							"pm.environment.set(\"Token\", JsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"UserName\":\"User1\",\n\t\"Email\": \"teste@gmail.com\",\n\t\"Password\": \"Teste1_\",\n\t\"PasswordConfirmation\": \"Teste1_\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}users/register",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}users/Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6e286f2-ee7a-4e0c-9da2-94c428735562",
+						"exec": [
+							"var JsonData = pm.response.json();",
+							"pm.environment.set(\"Token\", JsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"teste@gmail.com\",\n\t\"Password\": \"Teste1_\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}users/Authenticate",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"Authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eed8ce15-202a-449b-bb1b-3eb54b086bb5",
+						"exec": [
+							"var JsonData = pm.response.json();",
+							"pm.environment.set(\"oneID\", JsonData[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}users",
+					"host": [
+						"{{URL}}users"
+					]
+				},
+				"description": "Get All Users"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}users Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eed8ce15-202a-449b-bb1b-3eb54b086bb5",
+						"exec": [
+							"var JsonData = pm.response.json();",
+							"pm.environment.set(\"oneID\", JsonData[0].id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}users/logout",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"logout"
+					]
+				},
+				"description": "Get All Users"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}users/{{oneID}}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}users/{{oneID}}",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"{{oneID}}"
+					]
+				},
+				"description": "Get Users from Id"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}users/logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f156685a-6db8-4f5e-b473-b1431cec2bb9",
+						"exec": [
+							"var JsonData = pm.response.json();",
+							"pm.environment.set(\"Token\", JsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}users/logout",
+					"host": [
+						"{{URL}}users"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	}
+}
